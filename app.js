@@ -21,6 +21,7 @@ import { Timer } from './components/timer.js';
 import { createMessageEl, createLoadingEl, scrollToBottom, renderHistory } from './components/chat.js';
 import { renderCalendar } from './components/calendar.js';
 import { THEORY_CATEGORIES, renderTheoryCategories } from './components/theory.js';
+import { initRhythm } from './components/rhythm.js';
 
 // ---- Quick questions for AI chat ----
 const QUICK_QUESTIONS = [
@@ -206,6 +207,7 @@ class MusicMindApp {
       case 'chat':   this._renderChat(panel);   break;
       case 'world':  this._renderWorld(panel);  break;
       case 'record': this._renderRecord(panel); break;
+      case 'rhythm': initRhythm(panel);         break;
     }
   }
 
