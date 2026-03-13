@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-<title>MusicMind</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="音楽理論の耳鍛えトレーニングPWA">
+  <meta name="theme-color" content="#7c4dff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MusicMind">
+
+  <title>MusicMind</title>
+
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/styles/main.css">
+
+  <!-- PWA Icons (Apple) -->
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+  <!-- Inline SVG favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
 </head>
 <body>
-<h1>MusicMind</h1>
-<p>AI Practice App</p>
+  <div id="app">
+    <!-- Header -->
+    <header id="header">
+      <h1>🎵 MusicMind</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <section id="screen-home"  class="screen active"></section>
+      <section id="screen-game"  class="screen"></section>
+      <section id="screen-stats" class="screen"></section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav id="bottom-nav">
+      <button class="nav-btn active" data-tab="home">
+        <span class="nav-icon">🏠</span>
+        ホーム
+      </button>
+      <button class="nav-btn" data-tab="stats">
+        <span class="nav-icon">📊</span>
+        統計
+      </button>
+    </nav>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script type="module" src="/src/app.js"></script>
 </body>
 </html>
