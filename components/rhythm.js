@@ -17,20 +17,22 @@ const SLEN  = 33;  // stemLen: 符尾の長さ
 const BH    = 5;   // beamHeight
 const SUT   = ST + SS * 2; // stemUpThreshold = 48 (中線B4のy)
 
-// ---- ピッチ → y座標 (五線top=28, 各ステップ5px) ----
-// 五線: F5=28, D5=38, B4=48(中線), G4=58, E4=68
+// ---- ピッチ → y座標 (ト音記号五線) ----
+// 五線 (上→下): F5=28, D5=38, B4=48(中線), G4=58, E4=68
+// 各ステップ = SS/2 = 5px
 const PY = {
-  'G5': 13, 'F5': 18, 'E5': 23,
-  'D5': ST,            // 28 (top line)
-  'C5': ST + SS * 0.5, // 33
-  'B4': ST + SS * 1,   // 38
-  'A4': ST + SS * 1.5, // 43
-  'G4': ST + SS * 2,   // 48
-  'F4': ST + SS * 2.5, // 53
-  'E4': ST + SS * 3,   // 58
-  'D4': ST + SS * 3.5, // 63
-  'C4': ST + SS * 4,   // 68 (bottom line)
-  'B3': ST + SS * 4.5, // 73
+  'G5': ST - SS * 0.5,  // 23 — 上線上スペース
+  'F5': ST,              // 28 — 第5線 (上端)
+  'E5': ST + SS * 0.5,  // 33 — 第4・5線間スペース
+  'D5': ST + SS,         // 38 — 第4線
+  'C5': ST + SS * 1.5,  // 43 — 第3・4線間スペース
+  'B4': ST + SS * 2,     // 48 — 第3線 (中線) = SUT
+  'A4': ST + SS * 2.5,  // 53 — 第2・3線間スペース
+  'G4': ST + SS * 3,     // 58 — 第2線
+  'F4': ST + SS * 3.5,  // 63 — 第1・2線間スペース
+  'E4': ST + SS * 4,     // 68 — 第1線 (下端) = SB
+  'D4': ST + SS * 4.5,  // 73 — 下線下スペース
+  'C4': ST + SS * 5,     // 78 — 第1加線下 (中央ハ)
 };
 
 // ---- 音符タイプ → 幅 ----
@@ -160,14 +162,14 @@ const PATTERNS = [
     beats: 4,
     swing: true,
     notes: [
+      { type: 'e', pitch: 'E4', beamStart: true },
+      { type: 'e', pitch: 'G4', beamEnd: true   },
       { type: 'e', pitch: 'G4', beamStart: true },
       { type: 'e', pitch: 'B4', beamEnd: true   },
-      { type: 'e', pitch: 'G4', beamStart: true },
-      { type: 'e', pitch: 'D5', beamEnd: true   },
+      { type: 'e', pitch: 'E4', beamStart: true },
+      { type: 'e', pitch: 'G4', beamEnd: true   },
       { type: 'e', pitch: 'G4', beamStart: true },
       { type: 'e', pitch: 'B4', beamEnd: true   },
-      { type: 'e', pitch: 'G4', beamStart: true },
-      { type: 'e', pitch: 'D5', beamEnd: true   },
     ],
   },
 ];
