@@ -22,6 +22,7 @@ import { createMessageEl, createLoadingEl, scrollToBottom, renderHistory } from 
 import { renderCalendar } from './components/calendar.js';
 import { THEORY_CATEGORIES, renderTheoryCategories } from './components/theory.js';
 import { initRhythm } from './components/rhythm.js';
+import { initScore  } from './components/score.js';
 
 // ---- Quick questions for AI chat ----
 const QUICK_QUESTIONS = [
@@ -208,6 +209,7 @@ class MusicMindApp {
       case 'world':  this._renderWorld(panel);  break;
       case 'record': this._renderRecord(panel); break;
       case 'rhythm': initRhythm(panel);         break;
+      case 'score':  initScore(panel);          break;
     }
   }
 
