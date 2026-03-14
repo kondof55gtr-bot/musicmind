@@ -1,10 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-<title>MusicMind</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="楽器奏者が毎日使いたくなる練習OS。練習を迷わせない。">
+  <meta name="theme-color" content="#2d5a3d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="MusicMind">
+
+  <title>MusicMind</title>
+
+  <link rel="manifest" href="/musicmind/pwa/manifest.json">
+  <link rel="apple-touch-icon" href="/musicmind/icons/icon-192.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+  <link rel="stylesheet" href="/musicmind/styles.css">
 </head>
 <body>
-<h1>MusicMind</h1>
-<p>AI Practice App</p>
+<div id="app">
+
+  <!-- ==================== ONBOARDING ==================== -->
+  <div id="onboarding" class="hidden"></div>
+
+  <!-- ==================== MAIN APP ==================== -->
+  <div id="main-app" class="hidden">
+
+    <!-- Header -->
+    <header id="app-header">
+      <span class="header-logo">🎵 MusicMind</span>
+      <span class="header-user" id="header-user"></span>
+      <button class="header-btn" id="settings-btn" aria-label="設定">⚙️</button>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav id="tab-nav" role="tablist">
+      <button class="tab-btn active" data-tab="today"  role="tab">今日の練習</button>
+      <button class="tab-btn"        data-tab="theory" role="tab">音楽基礎</button>
+      <button class="tab-btn"        data-tab="chat"   role="tab">AI先生</button>
+      <button class="tab-btn"        data-tab="world"  role="tab">楽器の世界</button>
+      <button class="tab-btn"        data-tab="record" role="tab">練習記録</button>
+      <button class="tab-btn"        data-tab="rhythm" role="tab">リズム</button>
+      <button class="tab-btn"        data-tab="score"  role="tab">楽譜読み</button>
+    </nav>
+
+    <!-- Tab Content -->
+    <main id="tab-content">
+      <div id="tab-today"  class="tab-panel active" role="tabpanel"></div>
+      <div id="tab-theory" class="tab-panel"        role="tabpanel"></div>
+      <div id="tab-chat"   class="tab-panel"        role="tabpanel"></div>
+      <div id="tab-world"  class="tab-panel"        role="tabpanel"></div>
+      <div id="tab-record" class="tab-panel"        role="tabpanel"></div>
+      <div id="tab-rhythm" class="tab-panel"        role="tabpanel"></div>
+      <div id="tab-score"  class="tab-panel"        role="tabpanel"></div>
+    </main>
+  </div><!-- /main-app -->
+
+  <!-- ==================== MODALS ==================== -->
+  <!-- Backdrop (shared) -->
+  <div id="modal-backdrop" class="modal-backdrop hidden"></div>
+
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="modal hidden">
+    <div class="modal-handle"></div>
+    <h2 class="modal-title">⚙️ 設定</h2>
+    <div class="settings-field">
+      <label class="settings-label" for="settings-apikey">Anthropic API キー</label>
+      <input class="settings-input" type="password" id="settings-apikey"
+             placeholder="sk-ant-api03-..." autocomplete="off">
+      <p class="settings-hint">
+        AIチャット・楽器の世界・音楽基礎の解説に使用します。<br>
+        未入力の場合はオフライン回答が表示されます。
+      </p>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary btn-full" id="settings-save">保存</button>
+      <button class="btn btn-muted btn-full" id="settings-close">閉じる</button>
+    </div>
+  </div>
+
+  <!-- Upgrade Modal -->
+  <div id="upgrade-modal" class="modal hidden">
+    <div class="modal-handle"></div>
+    <h2 class="modal-title">🚀 Proにアップグレード</h2>
+    <p class="modal-body">AIと無制限に練習できる。月500円から。</p>
+    <ul class="upgrade-features">
+      <li>AIチャット無制限</li>
+      <li>練習メニューカスタマイズ（無制限）</li>
+      <li>音程トレーニング・リズム視唱・初見練習</li>
+      <li>練習記録エクスポート</li>
+      <li>複数楽器プロフィール切り替え</li>
+    </ul>
+    <div class="modal-actions">
+      <button class="btn btn-gold btn-full" id="upgrade-btn">今すぐ始める</button>
+      <button class="btn btn-muted btn-full" id="upgrade-later">後で</button>
+      <button class="btn btn-muted btn-full" id="upgrade-close" style="display:none">閉じる</button>
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<script type="module" src="/musicmind/app.js"></script>
 </body>
 </html>
