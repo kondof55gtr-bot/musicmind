@@ -3,27 +3,27 @@
 // ルートに配置することでアプリ全体のスコープをカバー
 // ============================================================
 
-const CACHE_NAME = 'musicmind-v2';
+const CACHE_NAME = 'musicmind-v3';
 
 // キャッシュするアセット (Cache First)
 const PRECACHE = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/app.js',
-  '/instrument.config.js',
-  '/components/timer.js',
-  '/components/chat.js',
-  '/components/calendar.js',
-  '/components/theory.js',
-  '/components/rhythm.js',
-  '/components/score.js',
-  '/utils/storage.js',
-  '/utils/date.js',
-  '/utils/api.js',
-  '/pwa/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png',
+  '/musicmind/',
+  '/musicmind/index.html',
+  '/musicmind/styles.css',
+  '/musicmind/app.js',
+  '/musicmind/instrument.config.js',
+  '/musicmind/components/timer.js',
+  '/musicmind/components/chat.js',
+  '/musicmind/components/calendar.js',
+  '/musicmind/components/theory.js',
+  '/musicmind/components/rhythm.js',
+  '/musicmind/components/score.js',
+  '/musicmind/utils/storage.js',
+  '/musicmind/utils/date.js',
+  '/musicmind/utils/api.js',
+  '/musicmind/pwa/manifest.json',
+  '/musicmind/icons/icon-192.png',
+  '/musicmind/icons/icon-512.png',
 ];
 
 // ---- Install ----
@@ -69,7 +69,7 @@ self.addEventListener('fetch', (event) => {
         .catch(() => {
           // オフライン時: HTMLリクエストはindexを返す
           if (event.request.destination === 'document') {
-            return caches.match('/index.html');
+            return caches.match('/musicmind/index.html');
           }
         });
     })
