@@ -91,10 +91,10 @@ export function saveSettings(s) { set(KEYS.SETTINGS, s); }
 
 // ---- API Key ----
 export function loadApiKey() {
-  return localStorage.getItem(KEYS.APIKEY) || '';
+  try { return localStorage.getItem(KEYS.APIKEY) || ''; } catch { return ''; }
 }
 export function saveApiKey(key) {
-  localStorage.setItem(KEYS.APIKEY, key);
+  try { localStorage.setItem(KEYS.APIKEY, key); } catch { /* ignore */ }
 }
 
 // ---- Freemium Limits ----

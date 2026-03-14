@@ -16,6 +16,8 @@ const PRECACHE = [
   '/components/chat.js',
   '/components/calendar.js',
   '/components/theory.js',
+  '/components/rhythm.js',
+  '/components/score.js',
   '/utils/storage.js',
   '/utils/date.js',
   '/utils/api.js',
